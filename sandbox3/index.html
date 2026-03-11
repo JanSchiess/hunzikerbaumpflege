@@ -1,122 +1,213 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TimberPro — Local Tree Services</title>
-  <meta name="description" content="Local tree cutting, pruning, and stump removal with transparent pricing and tidy clean-up." />
+  <title>Hunziker Baumpflege — Baumfällung, Schnitt & Pflege in Reitnau</title>
+  <meta name="description" content="Hunziker Baumpflege: Baumfällung, fachgerechter Baumschnitt, Wurzelstockfräsen und Sturmholz. Sicher, versichert und zuverlässig in Reitnau und Umgebung." />
   <style>
     :root{
-      --bg:#fcfcfd;--ink:#101418;--muted:#606770;--card:#ffffff;--line:#eceff2;
-      --accent:#2f855a;--accent-2:#276749;--max:1100px;--r:16px
+      --bg:#0f1210;             /* dunkler Grundton */
+      --card:#0f1411f2;         /* halbtransparent für Glaslook */
+      --text:#e8f1eb;
+      --muted:#a2b0a8;
+      --accent:#22c55e;         /* lebendiges Grün */
+      --accent-2:#16a34a;
+      --radius:14px;
+      --max:1080px;
+
+      /* Effekt-Stärken */
+      --glitter-opacity:.18;
+      --scan-opacity:.10;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,Inter,Segoe UI,Roboto,Arial,sans-serif}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
     img{max-width:100%;height:auto;display:block}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,3vw,28px)}
-    header .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .logo{font-weight:800}
-    .top a{border:1px solid var(--line);padding:.5rem .8rem;border-radius:999px;background:#fff}
+    .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,3vw,32px)}
+    header{
+      position:sticky;top:0;background:rgba(10,14,12,.6);backdrop-filter:saturate(1.3) blur(6px);
+      border-bottom:1px solid #203324;z-index:50
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .cta-top{
+      display:inline-flex;align-items:center;gap:.6rem;
+      background:linear-gradient(180deg,var(--accent),#108f3f);color:#07140b;border-radius:999px;padding:.6rem 1rem;border:1px solid #0e7e37
+    }
+    .cta-top:hover{filter:brightness(.98)}
     .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;margin-top:16px
+      position:relative;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(16px,3vw,28px);align-items:center;margin-top:20px
     }
     @media (max-width:880px){.hero{grid-template-columns:1fr}}
-    .hero h1{font-size:clamp(2rem,4.5vw,3rem);line-height:1.12;margin:.3rem 0}
-    .lead{color:#2b2f34;font-size:clamp(1rem,2.1vw,1.2rem)}
-    .actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:10px}
-    .btn{display:inline-flex;gap:.5rem;align-items:center;border-radius:12px;padding:.75rem 1rem;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
-    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent-2)}
-    .btn.primary:hover{background:var(--accent-2)}
-    .photo{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#e5e9ed;aspect-ratio:4/3}
-    .section{margin-top:clamp(26px,4vw,44px)}
-    h2{font-size:clamp(1.4rem,2.6vw,2rem)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    @media (max-width:920px){.grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:600px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-    .price{font-weight:800}
-    .note{color:var(--muted);font-size:.95rem}
-    .ribbon{
-      background:linear-gradient(135deg,#e9f7ef,#f6fff9);border:1px solid #d7efe1;border-radius:16px;padding:16px;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap
+    .hero-card{
+      background:var(--card);border:1px solid #1b2d21;border-radius:var(--radius);
+      padding:clamp(18px,3vw,28px);box-shadow:0 6px 30px rgba(0,0,0,.25)
     }
-    footer{margin-top:30px;padding:22px 0;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+    .eyebrow{color:var(--muted);font-size:.95rem;text-transform:uppercase;letter-spacing:.12rem}
+    h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin:.25rem 0 1rem}
+    .lead{font-size:clamp(1rem,2.2vw,1.2rem);color:#d3e1d8;margin-bottom:1rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+    .btn{
+      display:inline-flex;align-items:center;gap:.5rem;font-weight:600;border-radius:12px;padding:.75rem 1rem;border:1px solid #1a2a1f;background:#0c120e;color:var(--text)
+    }
+    .btn.primary{background:var(--accent);color:#06130a;border-color:#0e7e37}
+    .btn.primary:hover{background:var(--accent-2)}
+    .media{
+      overflow:hidden;border-radius:var(--radius);border:1px solid #1b2d21;background:#17231b;aspect-ratio:4/3
+    }
+    .section{margin-top:clamp(28px,4vw,48px)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:920px){.cards{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.cards{grid-template-columns:1fr}}
+    .card{background:#0f1411e6;border:1px solid #1b2d21;border-radius:var(--radius);padding:18px}
+    .card h3{margin:.2rem 0 .4rem}
+    .badge{display:inline-block;font-size:.8rem;padding:.25rem .6rem;border-radius:999px;background:#0f2a18;color:#86f2b0;border:1px solid #145c33}
+    .gallery{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+    @media (max-width:800px){.gallery{grid-template-columns:1fr}}
+    .gallery .shot{border-radius:12px;overflow:hidden;border:1px solid #1b2d21;background:#17231b;aspect-ratio:16/10}
+    .cta-bar{
+      background:linear-gradient(135deg,#0f2a18,#102e19 40%,#0f2a18);border:1px solid #1b3c27;border-radius:16px;padding:18px;margin-top:28px;
+      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.25)
+    }
+    .cta-bar strong{font-size:1.1rem}
+
+    footer{margin-top:40px;padding:24px 0;color:#98a79f;font-size:.95rem}
+
+    /* ===== Hintergrund: Glitter + Glitch ===== */
+    .bgfx, .bgfx::before, .bgfx::after{
+      position:fixed;inset:0;content:"";pointer-events:none;z-index:-1
+    }
+    /* Glitzerpunkte */
+    .bgfx{
+      background:
+        radial-gradient(2px 2px at 15% 20%, rgba(34,197,94,.7) 40%, transparent 41%),
+        radial-gradient(2px 2px at 35% 70%, rgba(34,197,94,.6) 40%, transparent 41%),
+        radial-gradient(2px 2px at 75% 30%, rgba(16,163,74,.65) 40%, transparent 41%),
+        radial-gradient(1.5px 1.5px at 55% 50%, rgba(180,255,210,.6) 40%, transparent 41%),
+        radial-gradient(1.5px 1.5px at 85% 80%, rgba(34,197,94,.55) 40%, transparent 41%);
+      opacity:var(--glitter-opacity);
+      mix-blend-mode:screen;
+      animation: drift 24s linear infinite both;
+    }
+    /* Scanline/Glitch-Schimmer */
+    .bgfx::before{
+      background:
+        repeating-linear-gradient(0deg, rgba(34,197,94,.08) 0 2px, transparent 2px 4px),
+        conic-gradient(from 0deg at 50% 50%, rgba(34,197,94,.06), transparent 25%, rgba(34,197,94,.06) 50%, transparent 75%, rgba(34,197,94,.06));
+      opacity:var(--scan-opacity);
+      filter:hue-rotate(-10deg) saturate(1.2);
+      animation: sweep 9s linear infinite;
+    }
+    /* Zufällige “Glitches” als Bänder */
+    .bgfx::after{
+      background:
+        repeating-linear-gradient(90deg, transparent 0 80px, rgba(34,197,94,.05) 80px 82px),
+        repeating-linear-gradient(0deg, transparent 0 120px, rgba(34,197,94,.07) 120px 123px);
+      opacity:.12;
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(-3%, -5%, 0)}
+    }
+    @keyframes sweep{
+      0%{transform:translateY(0)}
+      100%{transform:translateY(-12%)}
+    }
+    @keyframes pulse{
+      0%{filter:brightness(1)}
+      100%{filter:brightness(1.2)}
+    }
+
+    /* Motion-Schonung */
+    @media (prefers-reduced-motion: reduce){
+      .bgfx, .bgfx::before, .bgfx::after{animation:none}
+    }
   </style>
 </head>
 <body>
-<header class="wrap">
-  <div class="top">
-    <div class="logo">TimberPro</div>
-    <nav aria-label="Quick links">
-      <a href="#services">Services</a>
-      <a href="#gallery">Gallery</a>
-      <a href="tel:+11234567890">Call</a>
-    </nav>
-  </div>
-</header>
+  <div class="bgfx" aria-hidden="true"></div>
 
-<main class="wrap">
-  <section class="hero">
-    <div>
-      <p class="note">Local • Insured • Reliable</p>
-      <h1>Tree cutting that respects your property.</h1>
-      <p class="lead">We prune for health, fell with control, and leave your yard tidy. Send a photo and we’ll estimate the same day.</p>
-      <div class="actions">
-        <a class="btn primary" href="tel:+11234567890">📞 Call for quote</a>
-        <a class="btn" href="mailto:you@example.com?subject=Tree%20work%20estimate">✉️ Email photos</a>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Hauptnavigation">
+      <div class="brand">Hunziker Baumpflege</div>
+      <a class="cta-top" href="tel:+417860343XX" aria-label="Jetzt anrufen">
+        <!-- TODO: Ersetze XX mit den letzten zwei Ziffern -->
+        📞 Anrufen: 078&nbsp;603&nbsp;43&nbsp;**
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Baumfällung & Baumpflege</div>
+        <h1>Sicher. Versichert. Pünktlich.</h1>
+        <p class="lead">Fällen, Schnitt & Kronenpflege, Wurzelstockfräsen und Sturmholz – sauber und zuverlässig in Reitnau & Umgebung.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="tel:+417860343XX">📞 Angebot einholen</a>
+          <a class="btn" href="mailto:info@hunzikerbaumpflege.ch?subject=Anfrage%20Baumpflege">✉️ E‑Mail senden</a>
+          <span class="btn" style="background:#0b1510;border-color:#173a22;color:#bff5d3;">📍 Reitnau</span>
+        </div>
+        <p class="note" style="color:#97a79f;font-size:.95rem;margin-top:.75rem;">
+          Ansprechpartner: <strong>Jonas Hunziker</strong>
+        </p>
       </div>
-    </div>
-    <figure class="photo">
-      <img src="your-image-1.jpg" alt="Worker cutting branches with protective gear">
-    </figure>
-  </section>
+      <figure class="media">
+        <img src="hero.jpg" alt="Baumarbeiten im Grünen" />
+      </figure>
+    </section>
 
-  <section id="services" class="section">
-    <h2>Services & simple pricing</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Small tree removal</h3>
-        <p class="price">from $250</p>
-        <p class="note">Backyard access and haul‑away included.</p>
-      </article>
-      <article class="card">
-        <h3>Pruning & thinning</h3>
-        <p class="price">from $180</p>
-        <p class="note">Health‑focused cuts to improve structure.</p>
-      </article>
-      <article class="card">
-        <h3>Stump grinding</h3>
-        <p class="price">from $150</p>
-        <p class="note">Down to ~20cm below grade; reseed ready.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="gallery" class="section">
-    <h2>Recent work</h2>
-    <div class="grid">
-      <figure class="card photo"><img src="your-image-2.jpg" alt="Freshly pruned tree with balanced canopy"></figure>
-      <figure class="card photo"><img src="your-image-1.jpg" alt="Climber lowering a limb with rope"></figure>
-      <article class="card">
-        <h3>Safety & insurance</h3>
-        <p>We adhere to PPE, rigging best practices, and carry full liability coverage.</p>
-      </article>
-    </div>
-    <div class="ribbon" role="region" aria-label="Contact">
-      <strong>Ready to schedule?</strong>
-      <div class="actions">
-        <a class="btn primary" href="tel:+11234567890">Call now</a>
-        <a class="btn" href="mailto:you@example.com">Email</a>
+    <section class="section" aria-labelledby="services">
+      <h2 id="services">Leistungen</h2>
+      <div class="cards">
+        <article class="card">
+          <span class="badge">Meist gefragt</span>
+          <h3>Baumfällung</h3>
+          <p>Technisches Fällen auf engem Raum mit Seiltechnik. Auf Wunsch inkl. Abtransport.</p>
+        </article>
+        <article class="card">
+          <h3>Baumschnitt & Kronenpflege</h3>
+          <p>Schonender Schnitt, Totholz entfernen, Lichtraumprofil & Sicht.</p>
+        </article>
+        <article class="card">
+          <h3>Wurzelstockfräsen</h3>
+          <p>Stumpfentfernung & Planierung – bereit für Rasen oder Neupflanzung.</p>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    © <span id="y"></span> TimberPro • <a href="tel:+11234567890">+1 (123) 456‑7890</a> • <a href="mailto:you@example.com">you@example.com</a>
-  </footer>
-</main>
-<script>document.getElementById('y')?.append(new Date().getFullYear())</script>
+    <section class="section" aria-labelledby="work">
+      <h2 id="work">Aktuelle Arbeiten</h2>
+      <div class="gallery">
+        <figure class="shot">
+          <img src="work-1.jpg" loading="lazy" alt="Kronenpflege an einer Buche" />
+        </figure>
+        <figure class="shot">
+          <img src="hero.jpg" loading="lazy" alt="Baumfällung mit Seiltechnik" />
+        </figure>
+      </div>
+      <div class="cta-bar" role="region" aria-label="Schnellkontakt">
+        <strong>Benötigen Sie eine schnelle Einschätzung?</strong>
+        <div class="hero-actions">
+          <a class="btn primary" href="tel:+417860343XX">📞 Jetzt anrufen</a>
+          <a class="btn" href="mailto:info@hunzikerbaumpflege.ch?subject=Foto%20f%C3%BCr%20Kostensch%C3%A4tzung">✉️ Foto per E‑Mail senden</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap" style="padding:0">
+        <div>© <span id="y"></span> Hunziker Baumpflege • Reitnau • 📞 078&nbsp;603&nbsp;43&nbsp;** • ✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a></div>
+      </div>
+    </footer>
+  </main>
+
+  <script>document.getElementById('y')?.append(new Date().getFullYear());</script>
 </body>
 </html>
+``
