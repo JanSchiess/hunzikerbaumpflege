@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TreeWorks — Tree Cutting & Removal</title>
-  <meta name="description" content="Professional tree cutting, pruning, and removal. Safe, insured, and reliable service." />
+  <title>Hunziker Baumpflege — Baumfällung, Schnitt & Pflege in Reitnau</title>
+  <meta name="description" content="Hunziker Baumpflege: Baumfällung, fachgerechter Baumschnitt, Wurzelstockfräsen und Sturmholz. Sicher, versichert und zuverlässig in Reitnau und Umgebung." />
   <style>
     :root{
       --bg:#f7f7f8;
       --card:#ffffff;
       --text:#1b1f23;
       --muted:#6b7280;
-      --accent:#106b2d;
+      --accent:#106b2d;    /* Grün anpassbar */
       --accent-2:#0b4d20;
       --ring:rgba(16,107,45,.25);
       --radius:14px;
@@ -24,7 +24,7 @@
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,3vw,32px)}
     header{
-      position:sticky;top:0;background:rgba(247,247,248,.8);backdrop-filter:saturate(1.2) blur(8px);
+      position:sticky;top:0;background:rgba(247,247,248,.85);backdrop-filter:saturate(1.2) blur(6px);
       border-bottom:1px solid #e6e6e9;z-index:50
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -70,89 +70,94 @@
     }
     .cta-bar strong{font-size:1.1rem}
     footer{margin-top:40px;padding:24px 0;color:var(--muted);font-size:.95rem}
-    .pill{
-      border:1px solid #e0e0e6;border-radius:999px;padding:.2rem .6rem;background:#fff
-    }
+    .pill{border:1px solid #e0e0e6;border-radius:999px;padding:.2rem .6rem;background:#fff}
     .visually-hidden{position:absolute;left:-9999px}
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap nav" role="navigation" aria-label="Main">
-      <div class="brand">TreeWorks</div>
-      <a class="cta-top" href="tel:+11234567890" aria-label="Call now">📞 Call now</a>
+    <div class="wrap nav" role="navigation" aria-label="Hauptnavigation">
+      <div class="brand">Hunziker Baumpflege</div>
+      <a class="cta-top" href="tel:+417860343XX" aria-label="Jetzt anrufen">
+        <!-- TODO: Ersetze XX mit den letzten zwei Ziffern -->
+        📞 Anrufen: 078&nbsp;603&nbsp;43&nbsp;**
+      </a>
     </div>
   </header>
 
   <main class="wrap">
     <section class="hero">
       <div class="hero-card">
-        <div class="eyebrow">Tree Cutting & Removal</div>
-        <h1>Safe. Insured. On‑time tree services.</h1>
-        <p class="lead">Professional felling, pruning, stump grinding, and storm clean‑up. We protect your property, neighbors, and schedule.</p>
+        <div class="eyebrow">Baumfällung & Baumpflege</div>
+        <h1>Sicher. Versichert. Pünktlich.</h1>
+        <p class="lead">Fachgerechtes Fällen, Schnitt & Kronenpflege, Wurzelstockfräsen und Sturmholz. Wir schützen Ihr Grundstück, Nachbarn und Terminplan.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="tel:+11234567890">📞 Get a quote</a>
-          <a class="btn" href="mailto:you@example.com">✉️ Email</a>
-          <span class="pill">Serving your area</span>
+          <a class="btn primary" href="tel:+4178603XXXX">📞 Angebot einholen</a>
+          <a class="btn" href="mailto:info@hunzikerbaumpflege.ch?subject=Anfrage%20Baumpflege">✉️ E‑Mail senden</a>
+          <span class="pill">Reitnau & Umgebung</span>
         </div>
+        <p class="note" style="color:#4b5563;font-size:.95rem;margin-top:.75rem;">
+          Ansprechpartner: <strong>Jonas Hunziker</strong>
+        </p>
       </div>
       <figure class="media">
-        <img src="your-image-1.jpg" alt="Tree cutting professional working safely with ropes and helmet">
+        <!-- Ersetze durch dein Bild (4:3 empfohlen, ~1200×900, ~200 KB) -->
+        <img src="hero.jpg" alt="Baumarbeiten vor Ort in Reitnau" />
       </figure>
     </section>
 
     <section class="section" aria-labelledby="services">
-      <h2 id="services">Services</h2>
+      <h2 id="services">Leistungen</h2>
       <div class="cards">
         <article class="card">
-          <span class="badge">Most popular</span>
-          <h3>Tree Removal</h3>
-          <p>Technical felling in tight spaces with rigging. Full debris haul‑away available.</p>
+          <span class="badge">Meist gefragt</span>
+          <h3>Baumfällung</h3>
+          <p>Technisches Fällen auf engem Raum mit Seiltechnik. Auf Wunsch inkl. Abtransport.</p>
         </article>
         <article class="card">
-          <h3>Pruning & Shaping</h3>
-          <p>Health‑focused crown thinning, deadwood removal, and view clearance.</p>
+          <h3>Baumschnitt & Kronenpflege</h3>
+          <p>Gesundheitsschonender Schnitt, Totholz entfernen, Lichtraumprofil & Sicht.</p>
         </article>
         <article class="card">
-          <h3>Stump Grinding</h3>
-          <p>Complete stump removal and site leveling, ready for grass or replanting.</p>
+          <h3>Wurzelstockfräsen</h3>
+          <p>Stumpfentfernung & Planierung – bereit für Rasen oder Neupflanzung.</p>
         </article>
       </div>
     </section>
 
     <section class="section" aria-labelledby="about">
-      <h2 id="about">About</h2>
-      <p>TreeWorks is a local, insured operator with professional equipment and safety‑first methods. We provide clear quotes and arrive when we say we will.</p>
+      <h2 id="about">Über uns</h2>
+      <p>Hunziker Baumpflege ist regional verwurzelt, arbeitet sicherheitsfokussiert und ist vollständig versichert. Klare Offerten, saubere Kommunikation und Termine, die halten.</p>
     </section>
 
     <section class="section" aria-labelledby="work">
-      <h2 id="work">Recent Work</h2>
+      <h2 id="work">Aktuelle Arbeiten</h2>
       <div class="gallery">
         <figure class="shot">
-          <img src="your-image-2.jpg" alt="Before and after of a trimmed maple tree in a residential yard">
+          <img src="work-1.jpg" loading="lazy" alt="Kronenpflege an einer Buche" />
         </figure>
         <figure class="shot">
-          <img src="your-image-1.jpg" alt="Arborist lowering a branch with rigging line">
+          <img src="hero.jpg" loading="lazy" alt="Baumfällung mit Seiltechnik" />
         </figure>
       </div>
-      <div class="cta-bar" role="region" aria-label="Quick contact">
-        <strong>Need a quick estimate?</strong>
+      <div class="cta-bar" role="region" aria-label="Schnellkontakt">
+        <strong>Benötigen Sie eine schnelle Einschätzung?</strong>
         <div class="hero-actions">
-          <a class="btn primary" href="tel:+11234567890">Call now</a>
-          <a class="btn" href="mailto:you@example.com?subject=Tree%20quote">Email a photo for a quote</a>
+          <a class="btn primary" href="tel:+4178603XXXX">📞 Jetzt anrufen</a>
+          <a class="btn" href="mailto:info@hunzikerbaumpflege.ch?subject=Foto%20f%C3%BCr%20Kostensch%C3%A4tzung">✉️ Foto per E‑Mail senden</a>
         </div>
       </div>
     </section>
 
     <footer>
       <div class="wrap" style="padding:0">
-        <div>© <span id="y"></span> TreeWorks • Insured • <a href="tel:+11234567890">+1 (123) 456‑7890</a> • <a href="mailto:you@example.com">you@example.com</a></div>
+        <div>© <span id="y"></span> Hunziker Baumpflege • Reitnau • 📞 078&nbsp;603&nbsp;**&nbsp;** • ✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a></div>
       </div>
     </footer>
   </main>
 
   <script>
-    // Tiny enhancement: set year (works without JS, just cosmetic)
+    // Kleines Extra: Jahr automatisch setzen (rein kosmetisch)
     document.getElementById('y')?.append(new Date().getFullYear());
   </script>
 </body>
