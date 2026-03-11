@@ -127,8 +127,8 @@
   <script>
     // Jahr
     document.getElementById('y')?.append(new Date().getFullYear());
-
-    // 10 Wortspiele/Wartungszeilen (cringe erlaubt 😅)
+  
+    // 10 Wortspiele/Wartungszeilen
     const lines = [
       "Am Code bewässern…",
       "Die Seite treibt erste Knospen…",
@@ -141,29 +141,18 @@
       "Landingpage am Umtopfen…",
       "Letzte Äste zurechtgestutzt… gleich fällt der Go‑Live!"
     ];
-
+  
     const el = document.getElementById('line');
     let i = 0;
-
-    function showNext(){
-      if(!el) return;
-      // ausblenden
-      el.classList.remove('show');
-      setTimeout(()=>{
-        i = (i + 1) % lines.length;
-        el.textContent = lines[i];
-        // einblenden
-        requestAnimationFrame(()=> el.classList.add('show'));
-      }, 220); // kurzer Übergang
-    }
-
-    // Start
-    el?.classList.add('show');
-    // alle 2.8s wechseln
-    const interval = setInterval(showNext, 2800);
-
-    // Sauber aufräumen (optional, falls Single Page erweitert wird)
-    window.addEventListener('beforeunload', ()=> clearInterval(interval));
+  
+    // Set initial line
+    if (el) el.textContent = lines[i];
+  
+    // When one fade cycle completes, swap to the next line
+    el?.addEventListener('animationiteration', () => {
+      i = (i + 1) % lines.length;
+      el.textContent = lines[i];
+    }, { passive: true });
   </script>
 </body>
 </html>
