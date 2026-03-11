@@ -3,225 +3,161 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hunziker Baumpflege — Baumfällung, Schnitt & Pflege in Reitnau</title>
-  <meta name="description" content="Hunziker Baumpflege: Baumfällung, fachgerechter Baumschnitt, Wurzelstockfräsen und Sturmholz. Sicher, versichert und zuverlässig in Reitnau und Umgebung." />
+  <title>Hunziker Baumpflege — Reitnau & Umgebung</title>
+  <meta name="description" content="Hunziker Baumpflege in Reitnau & Umgebung. Baumfällung, Baumschnitt, Pflege. Zwischenstand der Website: Am Entstehen." />
   <style>
     :root{
-      --bg:#f7f7f8; --card:#ffffff; --text:#1b1f23; --muted:#6b7280;
-      --accent:#106b2d; --accent-2:#0b4d20; --radius:14px; --max:1080px;
+      --bg:#f5f7f6;
+      --panel:#ffffff;
+      --text:#15201a;
+      --muted:#64706a;
+      --accent:#106b2d;   /* Grün anpassbar */
+      --accent-2:#0b4d20;
+      --line:#e6ece9;
+      --max:960px;
+      --r:16px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
-    img{max-width:100%;height:auto;display:block}
+    html,body{
+      margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      line-height:1.6;
+    }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,3vw,32px)}
+    img{max-width:100%;height:auto;display:block}
+    .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,3vw,28px)}
+
+    /* Gläserner Top-Banner */
     header{
-      position:sticky;top:0;background:rgba(247,247,248,.85);backdrop-filter:saturate(1.2) blur(6px);
-      border-bottom:1px solid #e6e6e9;z-index:50
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.7);
+      backdrop-filter:saturate(1.2) blur(8px);
+      border-bottom:1px solid var(--line);
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{font-weight:800;letter-spacing:.2px}
-    .cta-top{
+    .call{
       display:inline-flex;align-items:center;gap:.6rem;
-      background:var(--accent);color:#fff;border-radius:999px;padding:.6rem 1rem;border:1px solid var(--accent-2)
+      border:1px solid var(--line);background:#fff;border-radius:999px;
+      padding:.55rem .9rem; color:var(--text)
     }
-    .cta-top:hover{background:var(--accent-2)}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(16px,3vw,28px);align-items:center;margin-top:20px}
-    @media (max-width:880px){.hero{grid-template-columns:1fr}}
-    .hero-card{background:var(--card);border:1px solid #ececf0;border-radius:var(--radius);
-      padding:clamp(18px,3vw,28px);box-shadow:0 6px 30px rgba(0,0,0,.04)}
-    .eyebrow{color:var(--muted);font-size:.95rem;text-transform:uppercase;letter-spacing:.12rem}
-    h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin:.25rem 0 1rem}
-    .lead{font-size:clamp(1rem,2.2vw,1.2rem);color:#333;margin-bottom:1rem}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;border-radius:12px;padding:.75rem 1rem;border:1px solid #dcdde2;background:#fff;color:var(--text)}
-    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent-2)}
-    .btn.primary:hover{background:var(--accent-2)}
-    .media{overflow:hidden;border-radius:var(--radius);border:1px solid #e9e9ee;background:#ddd;aspect-ratio:4/3}
+    .call strong{white-space:nowrap}
 
-    .section{margin-top:clamp(28px,4vw,48px)}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:920px){.cards{grid-template-columns:1fr 1fr}}
-    @media (max-width:620px){.cards{grid-template-columns:1fr}}
-    .card{background:var(--card);border:1px solid #ececf0;border-radius:var(--radius);padding:18px}
-    .card h3{margin:.2rem 0 .4rem}
-    .badge{display:inline-block;font-size:.8rem;padding:.25rem .6rem;border-radius:999px;background:#eff7f1;color:var(--accent);border:1px solid #d9f0de}
-
-    /* ===== Scroll-Szene ===== */
-    .scene-wrap{margin-top:clamp(32px,6vw,64px)}
-    .scene{
-      position:relative;border:1px solid #ececf0;border-radius:16px;background:linear-gradient(#eaf6ee,#f7faf7);
-      min-height:70vh; /* sichtbare Bühne */
-      overflow:hidden;
+    /* Center-Card */
+    .stage{
+      min-height:70vh;display:grid;place-items:center;
     }
-    .scene .stage{
-      position:sticky;top:0; /* bleibt im Blick, während der Container scrollt */
-      display:grid;place-items:center;min-height:70vh;padding:18px;
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:clamp(20px,4vw,36px);
+      box-shadow:0 10px 40px rgba(0,0,0,.06);
+      text-align:center;
     }
-    .scene .note{position:absolute;inset:auto 12px 12px auto;color:#3b4a40;font-size:.95rem;background:#ffffffcc;border:1px solid #dfe9e3;border-radius:999px;padding:.3rem .6rem}
+    h1{font-size:clamp(1.6rem,4.5vw,2.6rem);margin:.2rem 0 .4rem}
+    .eyebrow{
+      color:var(--muted);text-transform:uppercase;letter-spacing:.14rem;
+      font-size:.92rem;
+    }
+    .subtitle{color:#2b3430;margin-top:.4rem}
+    .locale{display:inline-block;margin-top:.9rem;padding:.25rem .6rem;
+      border-radius:999px;border:1px solid var(--line);background:#fff;color:#2b3430;font-size:.95rem}
 
-    .svg-tree{width:min(680px,95%);height:auto;display:block}
-    /* CSS-Variablen von JS gesteuert: --p (0..1) */
-    .canopy{transform-origin:240px 180px; /* Drehpunkt an Stammkante */ transform:rotate(calc(var(--p,0)*-60deg)) translateX(calc(var(--p,0)*6px))}
-    .cutline{stroke-dasharray:260;stroke-dashoffset:calc((1 - min(var(--p,0),1))*260)}
-    .saw{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateX(calc((var(--p,0)*140px) - 70px)) rotate(calc(var(--p,0)*-6deg));
-         transition:filter .2s ease;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2))}
-    .chips{opacity:clamp(0, (var(--p,0) - .35)*2, 1); transform:translateY(calc(var(--p,0)*18px))}
-    .bird{position:absolute;left:-10%;top:12%;opacity:0;transform:translateX(0);transition:transform .6s ease, opacity .3s ease}
-    .timber .bird{opacity:1;animation:fly 2.2s ease-out forwards}
-    @keyframes fly{to{transform:translateX(130vw) translateY(-6vh) rotate(8deg)}}
+    /* Rotierende Sprüche */
+    .ticker{
+      margin-top:1rem;font-size:clamp(1rem,2.8vw,1.25rem);font-weight:600;color:var(--accent);
+      min-height:2.2em;display:grid;place-items:center
+    }
+    .line{
+      will-change:opacity,transform;
+      opacity:0;transform:translateY(8px) scale(.985);
+      transition:opacity .35s ease, transform .35s ease;
+      text-wrap:balance;
+    }
+    .line.show{opacity:1;transform:translateY(0) scale(1)}
+    .hint{color:var(--muted);font-size:.95rem;margin-top:.6rem}
 
-    footer{margin-top:40px;padding:24px 0;color:#6b7280;font-size:.95rem}
+    footer{margin-top:24px;padding:24px 0;color:var(--muted);font-size:.95rem;text-align:center}
+
+    @media (prefers-reduced-motion: reduce){
+      .line{transition:none}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav" role="navigation" aria-label="Hauptnavigation">
+  <header aria-label="Top-Bereich">
+    <div class="wrap nav">
       <div class="brand">Hunziker Baumpflege</div>
-      <a class="cta-top" href="tel:+417860343XX" aria-label="Jetzt anrufen">
-        <!-- TODO: Ersetze XX mit den letzten zwei Ziffern -->
-        📞 Anrufen: 078&nbsp;603&nbsp;43&nbsp;**
+      <a class="call" href="tel:+417860343XX" aria-label="Jetzt anrufen, Telefonnummer 078 603 43 **">
+        <!-- TODO: Ersetze XX und ** mit den letzten zwei Ziffern -->
+        <span>📞</span><strong>078&nbsp;603&nbsp;43&nbsp;**</strong>
       </a>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <div class="hero-card">
-        <div class="eyebrow">Baumfällung & Baumpflege</div>
-        <h1>Sicher. Versichert. Pünktlich.</h1>
-        <p class="lead">Fällen, Schnitt & Kronenpflege, Wurzelstockfräsen und Sturmholz. Wir arbeiten sauber, sicher und termintreu in Reitnau & Umgebung.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="tel:+417860343XX">📞 Angebot einholen</a>
-          <a class="btn" href="mailto:info@hunzikerbaumpflege.ch?subject=Anfrage%20Baumpflege">✉️ E‑Mail senden</a>
-          <span class="btn" style="background:#fff;border-color:#dfe7e1;cursor:default">👨‍🔧 Jonas Hunziker</span>
+    <section class="stage">
+      <div class="card" role="status" aria-live="polite">
+        <div class="eyebrow">Website</div>
+        <h1>Am Entstehen…</h1>
+        <p class="subtitle">Wir bauen gerade etwas Schönes für Sie auf.</p>
+        <span class="locale">🌿 Reitnau & Umgebung</span>
+
+        <div class="ticker" aria-label="Statusmeldungen zur Entstehung">
+          <div id="line" class="line">Am Code bewässern…</div>
         </div>
-      </div>
-      <figure class="media">
-        <img src="hero.jpg" alt="Baumpflege durch Hunziker Baumpflege" />
-      </figure>
-    </section>
-
-    <!-- ===== Lustige Scroll-Szene ===== -->
-    <section class="scene-wrap section" aria-labelledby="szene">
-      <h2 id="szene">So fällt der Baum (kleine Scroll‑Animation)</h2>
-      <div class="scene" id="scene">
-        <div class="stage">
-          <!-- kleiner Vogel, fliegt los wenn der Baum kippt -->
-          <div class="bird" aria-hidden="true">🐦‍⬛</div>
-
-          <!-- SVG Baum -->
-          <svg class="svg-tree" viewBox="0 0 320 260" role="img" aria-label="Illustration: Baum wird angesägt und kippt">
-            <!-- Boden -->
-            <rect x="0" y="235" width="320" height="25" fill="#cfe8d6"/>
-            <rect x="0" y="240" width="320" height="20" fill="#b6dbc4"/>
-
-            <!-- Stamm -->
-            <rect x="150" y="120" width="20" height="120" rx="6" fill="#7a4f2b" />
-            <!-- Schnittlinie -->
-            <path class="cutline" d="M 130 180 C 155 178, 165 182, 190 180"
-                  fill="none" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/>
-
-            <!-- Krone (kippt) -->
-            <g class="canopy">
-              <circle cx="160" cy="95" r="54" fill="#2e7d4a"/>
-              <circle cx="120" cy="110" r="40" fill="#2f7c49"/>
-              <circle cx="200" cy="110" r="38" fill="#2a7343"/>
-              <circle cx="160" cy="60"  r="34" fill="#318554"/>
-            </g>
-
-            <!-- Sägespäne -->
-            <g class="chips">
-              <circle cx="150" cy="190" r="3" fill="#e7c29b"/>
-              <circle cx="160" cy="195" r="2" fill="#e7c29b"/>
-              <circle cx="165" cy="188" r="2.5" fill="#e7c29b"/>
-              <circle cx="155" cy="200" r="1.8" fill="#e7c29b"/>
-            </g>
-          </svg>
-
-          <!-- “Säge” Icon, bewegt sich über den Stamm -->
-          <div class="saw" aria-hidden="true" title="Säge">🪚</div>
-        </div>
-
-        <div class="note">Scrollen = Schnittfortschritt</div>
+        <p class="hint">Kurz gedulden – bald ist alles bereit.</p>
       </div>
     </section>
-
-    <section class="section" aria-labelledby="leistungen">
-      <h2 id="leistungen">Leistungen</h2>
-      <div class="cards">
-        <article class="card">
-          <span class="badge">Meist gefragt</span>
-          <h3>Baumfällung</h3>
-          <p>Technisches Fällen auf engem Raum mit Seiltechnik. Auf Wunsch inkl. Abtransport.</p>
-        </article>
-        <article class="card">
-          <h3>Baumschnitt & Kronenpflege</h3>
-          <p>Schonender Schnitt, Totholz entfernen, Lichtraumprofil & Sicht.</p>
-        </article>
-        <article class="card">
-          <h3>Wurzelstockfräsen</h3>
-          <p>Stumpfentfernung & Planierung – bereit für Rasen oder Neupflanzung.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="kontakt">
-      <h2 id="kontakt">Kontakt</h2>
-      <div class="card" style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center">
-        <a class="btn primary" href="tel:+417860343XX">📞 078&nbsp;603&nbsp;43&nbsp;**</a>
-        <a class="btn" href="mailto:info@hunzikerbaumpflege.ch">✉️ info@hunzikerbaumpflege.ch</a>
-        <span class="btn" style="cursor:default">📍 Reitnau</span>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap" style="padding:0">
-        <div>© <span id="y"></span> Hunziker Baumpflege • Reitnau • 📞 078&nbsp;603&nbsp;43&nbsp;** • ✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a></div>
-      </div>
-    </footer>
   </main>
 
+  <footer>
+    © <span id="y"></span> Hunziker Baumpflege • Reitnau & Umgebung • 📞 078&nbsp;603&nbsp;43&nbsp;** • ✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a>
+  </footer>
+
   <script>
-    // Jahr einsetzen
+    // Jahr
     document.getElementById('y')?.append(new Date().getFullYear());
 
-    // Scroll-Animation: ermittelt Fortschritt (0..1) über den Szenen-Container
-    (function(){
-      const scene = document.getElementById('scene');
-      if(!scene) return;
-      const root = document.documentElement;
-      const bird = scene.querySelector('.bird');
+    // 10 Wortspiele/Wartungszeilen (cringe erlaubt 😅)
+    const lines = [
+      "Am Code bewässern…",
+      "Die Seite treibt erste Knospen…",
+      "Wir sägen noch die letzten Bugs ab…",
+      "Design am Auslichten der Krone…",
+      "Neue Features am Einpflanzen…",
+      "CSS frisch gedüngt – gleich spriesst es!",
+      "Build wächst – bitte nicht gießen, wir übernehmen…",
+      "Baumstruktur sortieren… (nicht nur im DOM 🌳)",
+      "Landingpage am Umtopfen…",
+      "Letzte Äste zurechtgestutzt… gleich fällt der Go‑Live!"
+    ];
 
-      const update = () => {
-        const rect = scene.getBoundingClientRect();
-        const vh = window.innerHeight || 1;
-        // sichtbarer Bereich & Fortschritt schätzen
-        const start = Math.min(vh, Math.max(0, 0 - rect.top));
-        const total = Math.max(1, rect.height - vh);
-        let p = (start + (vh/2)) / (total + vh/2); // weiche Kurve
-        p = Math.min(1, Math.max(0, p));
+    const el = document.getElementById('line');
+    let i = 0;
 
-        root.style.setProperty('--p', p.toFixed(3));
+    function showNext(){
+      if(!el) return;
+      // ausblenden
+      el.classList.remove('show');
+      setTimeout(()=>{
+        i = (i + 1) % lines.length;
+        el.textContent = lines[i];
+        // einblenden
+        requestAnimationFrame(()=> el.classList.add('show'));
+      }, 220); // kurzer Übergang
+    }
 
-        // wenn ausreichend “angesägt”, animiere Vogel
-        if(p > 0.55){ document.body.classList.add('timber'); }
-        else{ document.body.classList.remove('timber'); }
-      };
+    // Start
+    el?.classList.add('show');
+    // alle 2.8s wechseln
+    const interval = setInterval(showNext, 2800);
 
-      let ticking = false;
-      const onScroll = () => {
-        if(!ticking){
-          window.requestAnimationFrame(() => { update(); ticking=false; });
-          ticking = true;
-        }
-      };
-
-      window.addEventListener('scroll', onScroll, {passive:true});
-      window.addEventListener('resize', onScroll);
-      update();
-    })();
+    // Sauber aufräumen (optional, falls Single Page erweitert wird)
+    window.addEventListener('beforeunload', ()=> clearInterval(interval));
   </script>
 </body>
 </html>
+``
