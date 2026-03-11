@@ -66,10 +66,12 @@
       border-radius:999px;border:1px solid var(--line);background:#fff;color:#2b3430;font-size:.95rem}
 
     /* Rotierende Sprüche */
-    .ticker{
-      margin-top:1rem;font-size:clamp(1rem,2.8vw,1.25rem);font-weight:600;color:var(--accent);
-      min-height:2.2em;display:grid;place-items:center
-    }
+
+    <div class="ticker" aria-label="Statusmeldungen zur Entstehung">
+      <div class="line line-a" id="lineA">Am Code bewässern…</div>
+      <div class="line line-b" id="lineB" aria-hidden="true"></div>
+    </div>
+
     .line{
       will-change:opacity,transform;
       opacity:0;transform:translateY(8px) scale(.985);
@@ -118,10 +120,8 @@
   </footer>
 
   <script>
-    // Jahr
     document.getElementById('y')?.append(new Date().getFullYear());
-
-    // 10 Wortspiele/Wartungszeilen (cringe erlaubt 😅)
+  
     const lines = [
       "Am Code bewässern…",
       "Die Seite treibt erste Knospen…",
@@ -134,28 +134,31 @@
       "Landingpage am Umtopfen…",
       "Letzte Äste zurechtgestutzt… gleich fällt der Go‑Live!"
     ];
-
-    const el = document.getElementById('line');
-    let i = 0;
-
-    function showNext(){
-      if(!el) return;
-      // ausblenden
-      el.classList.remove('show');
-      setTimeout(()=>{
-        i = (i + 1) % lines.length;
-        el.textContent = lines[i];
-        // einblenden
-        requestAnimationFrame(()=> el.classList.add('show'));
-      }, 220); // kurzer Übergang
+  
+    const a = document.getElementById('lineA');
+    const b = document.getElementById('lineB');
+    let i = 0, useA = true;
+  
+    // Init
+    a.textContent = lines[i];
+    a.classList.add('show');
+  
+    function next(){
+      const nextIndex = (i + 1) % lines.length;
+      const showEl = useA ? b : a;
+      const hideEl = useA ? a : b;
+  
+      showEl.textContent = lines[nextIndex];
+      // Crossfade
+      hideEl.classList.remove('show');
+      requestAnimationFrame(() => showEl.classList.add('show'));
+  
+      i = nextIndex;
+      useA = !useA;
     }
-
-    // Start
-    el?.classList.add('show');
-    // alle 2.8s wechseln
-    const interval = setInterval(showNext, 2800);
-
-    // Sauber aufräumen (optional, falls Single Page erweitert wird)
+  
+    // Change every 2.8s (matches previous rhythm)
+    const interval = setInterval(next, 2800);
     window.addEventListener('beforeunload', ()=> clearInterval(interval));
   </script>
 </body>
