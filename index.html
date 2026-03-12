@@ -144,13 +144,13 @@
         el.textContent = lines[i];
         // einblenden
         requestAnimationFrame(()=> el.classList.add('show'));
-      }, 220); // kurzer Übergang
+      }, 220); // kurzer Übergang (ausgeblendet)
     }
 
     // Start
     el?.classList.add('show');
     // alle 2.8s wechseln
-    const interval = setInterval(showNext, 2800);
+    const interval = setInterval(showNext, 4000); // Zeitintervall Millisekunden
 
     // Sauber aufräumen (optional, falls Single Page erweitert wird)
     window.addEventListener('beforeunload', ()=> clearInterval(interval));
