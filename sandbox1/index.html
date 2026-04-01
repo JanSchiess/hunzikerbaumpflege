@@ -11,10 +11,19 @@
 /* ZENTRALE VARIABLEN */
 :root {
     --bg-color: #fff6de;
-    --brand-color: #588157;
-    --tile-color: #CCD5AE;
+    --brand-color: #ffffff;
+    --tile-color: #4b5d3696;
     --tile-radius: 15px;
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* RADIAL GRADIENT BACKGROUND */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(125% 125% at 50% 90%, #1a1a1a 40%, #1a4d2e 100%);
+    z-index: -1;
 }
 
 * { box-sizing: border-box; }
@@ -60,17 +69,18 @@ h1 {
     margin-bottom: 30px;
     line-height: 1.5;
     text-align: justify;
+    color: white;
 }
 
 .contact-info {
     font-size: 0.9rem;
     line-height: 1.8;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 20px;
 }
 
 .contact-info a {
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
@@ -127,7 +137,7 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
     font-size: 1.2rem;
     font-weight: bold;
     z-index: 2;
@@ -204,7 +214,7 @@ h2 {
 
 <div class="portrait-placeholder"></div>
 
-<h1>Hunziker<br>Baumpflege</h1>
+<h1 style="color: #CCD5AE;">Hunziker<br>Baumpflege</h1>
 
 <div class="description">
 Ich bin Jonas Hunziker, Ihr Experte für vitale und sichere Bäume in der Region. Seit 2026 bin ich selbstständig in den Regionen Mittelland und Innerschweiz tätig und kümmere mich mit Leidenschaft um Pflanzungen, Pflege, Baumbeurteilungen und Fällungen.
