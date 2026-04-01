@@ -1,164 +1,279 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hunziker Baumpflege — Baumfällung, Schnitt & Pflege in Reitnau</title>
-  <meta name="description" content="Hunziker Baumpflege: Baumfällung, fachgerechter Baumschnitt, Wurzelstockfräsen und Sturmholz. Sicher, versichert und zuverlässig in Reitnau und Umgebung." />
-  <style>
-    :root{
-      --bg:#f7f7f8;
-      --card:#ffffff;
-      --text:#1b1f23;
-      --muted:#6b7280;
-      --accent:#106b2d;    /* Grün anpassbar */
-      --accent-2:#0b4d20;
-      --ring:rgba(16,107,45,.25);
-      --radius:14px;
-      --max:1080px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hunziker Baumpflege</title>
+
+<style>
+
+/* ZENTRALE VARIABLEN */
+:root {
+    --bg-color: #fff6de;
+    --brand-color: #588157;
+    --tile-color: #CCD5AE;
+    --tile-radius: 15px;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: var(--font-main);
+    display: flex;
+    min-height: 100vh; /* allow full page scroll */
+}
+
+/* LINKS: SIDEBAR */
+aside {
+    width: 33.33%;
+    padding: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.portrait-placeholder {
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 1 / 1;
+    background: url('files/portrait1.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: var(--brand-color);
+    font-size: 2.5rem;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+}
+
+.description {
+    margin-bottom: 30px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.contact-info {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 20px;
+}
+
+.contact-info a {
+    color: black;
+    text-decoration: none;
+}
+
+/* RECHTS: CONTENT */
+main {
+    width: 66.66%;
+    padding: 40px;
+    /* add some extra padding right for better readability */
+    padding-right: 120px;
+}
+
+.category-section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    color: var(--brand-color);
+    border-bottom: 2px solid var(--brand-color);
+    padding-bottom: 5px;
+}
+
+/* TILE GRID */
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tile {
+    aspect-ratio: 1 / 1;
+    background-color: var(--tile-color);
+    border-radius: var(--tile-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    position: relative; 
+    overflow: hidden;
+}
+
+.tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--tile-radius);
+    transition: filter 0.2s;
+}
+
+/* PERMANENTER TITEL */
+.tile-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    transition: opacity 0.3s;
+}
+
+.tile:hover img {
+    filter: brightness(0.6); /* opacity of hovering. 0 = black, 1 = no change */
+}
+
+.tile:hover {
+    transform: scale(1.02);
+    /* filter: brightness(0.7); */
+}
+
+.tile:hover .tile-overlay {
+    opacity: 1;
+}
+
+/* HOVER OVERLAY (DESCRIPTION) */
+.tile-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    padding: 50px;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    color: white;
+    background: rgba(0,0,0,0);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    opacity: 0;
+    text-align: center;
+    transition: opacity 0.2s;
+}
+
+/* Zustand bei Mausberührung */
+.tile:hover .tile-overlay {
+    opacity: 1 !important;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
-    img{max-width:100%;height:auto;display:block}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,3vw,32px)}
-    header{
-      position:sticky;top:0;background:rgba(247,247,248,.85);backdrop-filter:saturate(1.2) blur(6px);
-      border-bottom:1px solid #e6e6e9;z-index:50
+
+    aside,
+    main {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 40px;
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{font-weight:800;letter-spacing:.2px}
-    .cta-top{
-      display:inline-flex;align-items:center;gap:.6rem;
-      background:var(--accent);color:#fff;border-radius:999px;padding:.6rem 1rem;border:1px solid var(--accent-2)
-    }
-    .cta-top:hover{background:var(--accent-2)}
-    .hero{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(16px,3vw,28px);align-items:center;margin-top:20px
-    }
-    @media (max-width:880px){.hero{grid-template-columns:1fr}}
-    .hero-card{
-      background:var(--card);border:1px solid #ececf0;border-radius:var(--radius);
-      padding:clamp(18px,3vw,28px);box-shadow:0 6px 30px rgba(0,0,0,.04)
-    }
-    .eyebrow{color:var(--muted);font-size:.95rem;text-transform:uppercase;letter-spacing:.12rem}
-    h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin:.25rem 0 1rem}
-    .lead{font-size:clamp(1rem,2.2vw,1.2rem);color:#333;margin-bottom:1rem}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem}
-    .btn{
-      display:inline-flex;align-items:center;gap:.5rem;font-weight:600;border-radius:12px;padding:.75rem 1rem;border:1px solid #dcdde2;background:#fff;color:var(--text)
-    }
-    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent-2)}
-    .btn.primary:hover{background:var(--accent-2)}
-    .media{
-      overflow:hidden;border-radius:var(--radius);border:1px solid #e9e9ee;background:#ddd;aspect-ratio:4/3
-    }
-    .section{margin-top:clamp(28px,4vw,48px)}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:920px){.cards{grid-template-columns:1fr 1fr}}
-    @media (max-width:620px){.cards{grid-template-columns:1fr}}
-    .card{background:var(--card);border:1px solid #ececf0;border-radius:var(--radius);padding:18px}
-    .card h3{margin:.2rem 0 .4rem}
-    .badge{display:inline-block;font-size:.8rem;padding:.25rem .6rem;border-radius:999px;background:#eff7f1;color:var(--accent);border:1px solid #d9f0de}
-    .gallery{display:grid;grid-template-columns:2fr 1fr;gap:12px}
-    @media (max-width:800px){.gallery{grid-template-columns:1fr}}
-    .gallery .shot{border-radius:12px;overflow:hidden;border:1px solid #e9e9ee;background:#ddd;aspect-ratio:16/10}
-    .cta-bar{
-      background:linear-gradient(135deg,#eaf6ee,#f7faf7);border:1px solid #e0efe4;border-radius:16px;padding:18px;margin-top:28px;
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px
-    }
-    .cta-bar strong{font-size:1.1rem}
-    footer{margin-top:40px;padding:24px 0;color:var(--muted);font-size:.95rem}
-    .pill{border:1px solid #e0e0e6;border-radius:999px;padding:.2rem .6rem;background:#fff}
-    .visually-hidden{position:absolute;left:-9999px}
-  </style>
+}
+
+</style>
 </head>
+
+
+
+
+
+
+
+
 <body>
-  <header>
-    <div class="wrap nav" role="navigation" aria-label="Hauptnavigation">
-      <div class="brand">Hunziker Baumpflege</div>
-      <a class="cta-top" href="tel:+417860343XX" aria-label="Jetzt anrufen">
-        <!-- TODO: Ersetze XX mit den letzten zwei Ziffern -->
-        📞 Anrufen: 078&nbsp;603&nbsp;43&nbsp;**
-      </a>
+
+<aside> <!-- LINKS: PORTRAIT, INFO, KONTAKT -->
+
+<div class="portrait-placeholder"></div>
+
+<h1>Hunziker<br>Baumpflege</h1>
+
+<div class="description">
+Ich bin Jonas Hunziker, Ihr Experte für vitale und sichere Bäume in der Region. Seit 2026 bin ich selbstständig in den Regionen Mittelland und Innerschweiz tätig und kümmere mich mit Leidenschaft um Pflanzungen, Pflege, Baumbeurteilungen und Fällungen.
+</div>
+
+<div class="contact-info">
+📞 <a href="tel:+41786034397">078 603 43 97</a><br>
+📌 <a href="https://maps.app.goo.gl/yUAcG2PGMhpQUkfa8" target="_blank">Stolten 102, 5054 Kirchleerau</a><br>
+✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a>
+</div>
+
+
+
+</aside>  <!-- RECHTS: KOMPETENZEN, PARTNER, REFERENZEN -->
+
+<main>
+
+<section class="category-section">
+<h2>Kompetenzen / Angebot / Leistungen</h2>
+    <div class="tile-grid">
+        <div class="tile">
+            <img src="files/looking1.jpg">
+            <div class="tile-title">Pflanzungen</div>
+            <div class="tile-overlay">Fachgerechte Neupflanzung von Bäumen und Sträuchern für ein nachhaltiges Ökosystem</div>
+        </div>
+        <div class="tile">
+            <img src="files/looking2.jpg">
+            <div class="tile-title">Baumpflege</div>
+            <div class="tile-overlay">Kronenpflege, Totholzentfernung und Erhaltungsschnitt für vitale Baumkronen</div>
+        </div>
+        <div class="tile">
+            <img src="files/looking3.jpg">
+            <div class="tile-title">Baumbeurteilung</div>
+            <div class="tile-overlay">Professionelle Analyse der Standsicherheit und Gesundheit Ihrer Bäume</div>
+        </div>
+        <div class="tile">
+            <img src="files/looking4.jpg">
+            <div class="tile-title">Fällungen</div>
+            <div class="tile-overlay">Spezialfällungen mittels Seilklettertechnik - sicher und präzise auf engstem Raum</div>
+        </div>
     </div>
-  </header>
+</section>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-card">
-        <div class="eyebrow">Baumfällung & Baumpflege</div>
-        <h1>Sicher. Versichert. Pünktlich.</h1>
-        <p class="lead">Fachgerechtes Fällen, Schnitt & Kronenpflege, Wurzelstockfräsen und Sturmholz. Wir schützen Ihr Grundstück, Nachbarn und Terminplan.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="tel:+4178603XXXX">📞 Angebot einholen</a>
-          <a class="btn" href="mailto:info@hunzikerbaumpflege.ch?subject=Anfrage%20Baumpflege">✉️ E‑Mail senden</a>
-          <span class="pill">Reitnau & Umgebung</span>
-        </div>
-        <p class="note" style="color:#4b5563;font-size:.95rem;margin-top:.75rem;">
-          Ansprechpartner: <strong>Jonas Hunziker</strong>
-        </p>
-      </div>
-      <figure class="media">
-        <!-- Ersetze durch dein Bild (4:3 empfohlen, ~1200×900, ~200 KB) -->
-        <img src="hero.jpg" alt="Baumarbeiten vor Ort in Reitnau" />
-      </figure>
-    </section>
 
-    <section class="section" aria-labelledby="services">
-      <h2 id="services">Leistungen</h2>
-      <div class="cards">
-        <article class="card">
-          <span class="badge">Meist gefragt</span>
-          <h3>Baumfällung</h3>
-          <p>Technisches Fällen auf engem Raum mit Seiltechnik. Auf Wunsch inkl. Abtransport.</p>
-        </article>
-        <article class="card">
-          <h3>Baumschnitt & Kronenpflege</h3>
-          <p>Gesundheitsschonender Schnitt, Totholz entfernen, Lichtraumprofil & Sicht.</p>
-        </article>
-        <article class="card">
-          <h3>Wurzelstockfräsen</h3>
-          <p>Stumpfentfernung & Planierung – bereit für Rasen oder Neupflanzung.</p>
-        </article>
-      </div>
-    </section>
+<section class="category-section">
+<h2>Partner / Kunden</h2>
 
-    <section class="section" aria-labelledby="about">
-      <h2 id="about">Über uns</h2>
-      <p>Hunziker Baumpflege ist regional verwurzelt, arbeitet sicherheitsfokussiert und ist vollständig versichert. Klare Offerten, saubere Kommunikation und Termine, die halten.</p>
-    </section>
+<div class="tile-grid">
+<div class="tile">Referenz 1</div>
+<div class="tile">Referenz 2</div>
+<div class="tile">Referenz 3</div>
+<div class="tile">Referenz 4</div>
+</div>
 
-    <section class="section" aria-labelledby="work">
-      <h2 id="work">Aktuelle Arbeiten</h2>
-      <div class="gallery">
-        <figure class="shot">
-          <img src="work-1.jpg" loading="lazy" alt="Kronenpflege an einer Buche" />
-        </figure>
-        <figure class="shot">
-          <img src="hero.jpg" loading="lazy" alt="Baumfällung mit Seiltechnik" />
-        </figure>
-      </div>
-      <div class="cta-bar" role="region" aria-label="Schnellkontakt">
-        <strong>Benötigen Sie eine schnelle Einschätzung?</strong>
-        <div class="hero-actions">
-          <a class="btn primary" href="tel:+4178603XXXX">📞 Jetzt anrufen</a>
-          <a class="btn" href="mailto:info@hunzikerbaumpflege.ch?subject=Foto%20f%C3%BCr%20Kostensch%C3%A4tzung">✉️ Foto per E‑Mail senden</a>
-        </div>
-      </div>
-    </section>
+</section>
 
-    <footer>
-      <div class="wrap" style="padding:0">
-        <div>© <span id="y"></span> Hunziker Baumpflege • Reitnau • 📞 078&nbsp;603&nbsp;**&nbsp;** • ✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a></div>
-      </div>
-    </footer>
-  </main>
 
-  <script>
-    // Kleines Extra: Jahr automatisch setzen (rein kosmetisch)
-    document.getElementById('y')?.append(new Date().getFullYear());
-  </script>
+<section class="category-section">
+<h2>Referenzen / Projekte</h2>
+
+<div class="tile-grid">
+<div class="tile">Partner 1</div>
+<div class="tile">Partner 2</div>
+<div class="tile">Partner 3</div>
+<div class="tile">Partner 4</div>
+</div>
+
+</section>
+
+</main>
+
 </body>
 </html>
