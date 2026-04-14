@@ -190,6 +190,11 @@ h2::before { display: none; }
     .intro-section { flex-direction: column; text-align: center; }
     .description { text-align: left; }
 
+    .header-wrapper {
+        margin-bottom: 40px; /* Deutlich reduziert von 100px auf 40px */
+        top: 0px;
+    }
+    
     /* Portrait Full Width inkl. Schatten-Korrektur */
     .portrait-square { 
         width: calc(100% - 10px); 
@@ -200,16 +205,11 @@ h2::before { display: none; }
         box-shadow: 10px 10px 0px var(--brand-light); 
     }
 
-    .header-wrapper {
-        margin-bottom: 40px; /* Deutlich reduziert von 100px auf 40px */
-        top: 0px;
-    }
-    
     /* 6. Title on one line using container units (cqw) */
     h1.full-width {
         /* Verhindert Umbruch und erzwingt Skalierung auf Fensterbreite */
-        padding-top: 10px;   /* Verschiebt den Titel 10px nach unten */
-        font-size: 7.9vw; 
+        padding-top: 00px;   /* 10 Verschiebt den Titel 10px nach unten */
+        font-size: 7.7vw; 
         white-space: nowrap;
         display: block;
         width: 100%;
