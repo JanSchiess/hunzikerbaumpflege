@@ -198,17 +198,18 @@ h2::before { display: none; }
 
     /* Portrait Full Width inkl. Schatten-Korrektur */
     .portrait-square { 
-        width: calc(100% - 10px); /* Platz für 10px Schatten rechts */
-        aspect-ratio: 1 / 1;      /* Behält Quadratform bei */
-        max-width: none;          /* Hebt Limitierung auf */
-        margin-right: 10px;       /* Zentriert das Bild trotz Schatten-Versatz */
+        width: calc(100% - 10px); 
+        aspect-ratio: 1 / 1;      /* Erzwingt das Quadrat (= Quadrat) */
+        height: auto;             /* Überschreibt feste Pixelwerte vom Desktop */
+        max-width: 500px;         /* Optional: Verhindert, dass es auf Tablets riesig wird */
+        margin-right: 10px;       
         box-shadow: 10px 10px 0px var(--brand-light); 
     }
     
     /* 6. Title on one line using container units (cqw) */
     h1.full-width {
         /* Verhindert Umbruch und erzwingt Skalierung auf Fensterbreite */
-        font-size: 7.8vw; 
+        font-size: 7.9vw; 
         white-space: nowrap;
         display: block;
         width: 100%;
@@ -217,7 +218,7 @@ h2::before { display: none; }
 
     .contact-info { 
         flex-direction: column; 
-        gap: 15px;
+        gap: 50px;
         text-align: center;
     }
 }
