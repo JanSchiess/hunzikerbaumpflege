@@ -186,12 +186,12 @@ h2::before { display: none; }
 
 /* 6. Mobile optimizations */
 @media (max-width: 768px) {
-    .container { padding: 5px 20px 30px 20px; } /* top wenig damit Titel nicht zu tief*/
+    .container { padding: 0px 20px 30px 20px; } /* top wenig damit Titel nicht zu tief*/
     .intro-section { flex-direction: column; text-align: center; }
     .description { text-align: left; }
 
     .header-wrapper {
-        margin-bottom: 30px; /* Deutlich reduziert von 100px auf 40px */
+        margin-bottom: 50px; /* Deutlich reduziert von 100px auf 40px */
         top: 0px;
     }
     
@@ -208,7 +208,7 @@ h2::before { display: none; }
     /* 6. Title on one line using container units (cqw) */
     h1.full-width {
         /* Verhindert Umbruch und erzwingt Skalierung auf Fensterbreite */
-        padding-top: 05px;   /* 10 Verschiebt den Titel 10px nach unten */
+        padding-top: 10px;   /* 10 Verschiebt den Titel 10px nach unten */
         font-size: 7.7vw; 
         white-space: nowrap;
         display: block;
