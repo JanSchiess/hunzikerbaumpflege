@@ -195,6 +195,15 @@ h2::before { display: none; }
         /* 5. Ensures shadow is bottom-right on mobile too */
         box-shadow: 10px 10px 0px var(--brand-light); 
     }
+
+    /* Portrait Full Width inkl. Schatten-Korrektur */
+    .portrait-square { 
+        width: calc(100% - 10px); /* Platz für 10px Schatten rechts */
+        aspect-ratio: 1 / 1;      /* Behält Quadratform bei */
+        max-width: none;          /* Hebt Limitierung auf */
+        margin-right: 10px;       /* Zentriert das Bild trotz Schatten-Versatz */
+        box-shadow: 10px 10px 0px var(--brand-light); 
+    }
     
     /* 6. Title on one line using container units (cqw) */
     h1.full-width {
