@@ -170,7 +170,7 @@ h2::before { display: none; }
     justify-content: space-between; 
     align-items: center;
     gap: 20px;
-    padding-top: 30px;
+    padding-top: 40px;
     border-top: 2px solid #eee;
 }
 
@@ -198,7 +198,12 @@ h2::before { display: none; }
     
     /* 6. Title on one line using container units (cqw) */
     h1.full-width {
-        font-size: 11cqw; 
+        /* Verhindert Umbruch und erzwingt Skalierung auf Fensterbreite */
+        font-size: 8.8vw; 
+        white-space: nowrap;
+        display: block;
+        width: 100%;
+        letter-spacing: -0.05em; /* Leichtes Zusammenrücken für mehr Platz */
     }
 
     .contact-info { 
