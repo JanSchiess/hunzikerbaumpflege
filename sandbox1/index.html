@@ -60,11 +60,13 @@ h1.full-width {
     margin: 0;
     color: #1a1a1a;
     font-weight: 800;
+    letter-spacing: -0.02em;
     text-align: center;
-    white-space: nowrap; 
-    font-size: 8.2cqw; 
-    width: 100%;
+    white-space: nowrap;
+    /* Responsive font size based on container width */
+    font-size: 8.4cqw; 
     display: block;
+    width: 100%;
 }
 
 .slogan-section {
@@ -135,7 +137,7 @@ h2 {
 }
 
 .section-divider {
-    border-top: 1px solid #eee;
+    border-top: 1px solid #e2e2e2;
     margin-top: 60px;
     padding-top: 10px; 
 }
@@ -171,7 +173,7 @@ h2 {
     align-items: center;
     gap: 20px;
     padding-top: 40px;
-    border-top: 2px solid #eee;
+    border-top: 1px solid #e2e2e2;
 }
 
 .contact-info a { 
@@ -190,7 +192,7 @@ h2 {
     .mobile-order-text { order: 2; }
     .mobile-order-img { order: 1; }
     .intro-section { flex-direction: column; text-align: center; }
-    .portrait-square { width: calc(100% - 10px); aspect-ratio: 1/1; height: auto; }
+    /* .portrait-square { width: calc(100% - 10px); aspect-ratio: 1/1; height: auto; } */
     h1.full-width { font-size: 7.7vw; }
 }
 </style>
@@ -208,7 +210,7 @@ h2 {
     </div>
 
     <section>
-        <h2>Kompetenzen / Angebot / Leistungen</h2>
+        <h2>Angebot</h2>
         
         <div class="tile-grid">
             <div class="tile tile-image mobile-order-img" style="background-image: url('files/Jimdo_Pflanzen.jpg');"></div>
@@ -243,17 +245,7 @@ h2 {
         </div>
     </section>
 
-    <section>
-        <h2>Referenzen / Projekte</h2>
-        <div class="tile-grid">
-            <div class="tile tile-image" style="background: var(--mint-gradient);">Partner 1</div>
-            <div class="tile tile-text"><h3>Partner 1</h3>Beschreibung Partner 1 oder Projekt-Details hier einfügen.</div>
-        </div>
-        <div class="tile-grid">
-            <div class="tile tile-text"><h3>Partner 2</h3>Beschreibung Partner 2 oder Projekt-Details hier einfügen.</div>
-            <div class="tile tile-image" style="background: var(--mint-gradient);">Partner 2</div>
-        </div>
-    </section>
+
 
     <section class="section-divider">
         <h2>Über mich</h2>
