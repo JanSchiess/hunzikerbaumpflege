@@ -186,7 +186,8 @@ h2 {
     color: var(--brand-light);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Anpassungen für mobile (Handy) Ansicht */
+    .container { padding: 0px 20px 30px 20px; } /* top wenig damit Titel nicht zu tief*/
     .tile-grid { grid-template-columns: 1fr; }
     .tile { aspect-ratio: auto; min-height: 250px; }
     .mobile-order-text { order: 2; }
@@ -209,7 +210,7 @@ h2 {
     .slogan-text {font-size: 1.5rem; }
     .portrait-square { 
         width: calc(100% - 10px); 
-        /* aspect-ratio: 1 / 1;      /* Erzwingt das Quadrat (= Quadrat) */ */
+        /* aspect-ratio: 1 / 1;      /* Erzwingt das Quadrat (= Quadrat) */
         height: auto;             /* Überschreibt feste Pixelwerte vom Desktop */
         max-width: 500px;         /* Optional: Verhindert, dass es auf Tablets riesig wird */
         margin-right: 10px;       
