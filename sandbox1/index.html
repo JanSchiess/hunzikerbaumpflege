@@ -1,296 +1,97 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hunziker Baumpflege</title>
-<link rel="icon" type="image/png" href="/files/favicon_logo_HB_transparent_circle.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunziker Baumpflege</title>
+    <link rel="icon" type="image/png" href="/files/favicon_logo_HB_transparent_circle.png">
+    <style>
+        :root {
+            --deep: #0f1e19;
+            --moss: #243d32;
+            --mint: #7da392;
+            --glow: #a8c3b8;
+            --sunlight: #cbdad3;
+        }
 
-<style>
-:root {
-    --bg-color: #f4f7f4;
-    --card-bg: #ffffff;
-    --brand-color: #2c4b3e;
-    --brand-light: #7da392;
-    --brand-mid: #547b6a; 
-    --mint-gradient: linear-gradient(135deg, #d4e0d4 0%, #8ca69e 100%);
-    --tile-radius: 12px;
-    --font-main: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --box-width: 1000px;
-    --section-gap: 80px; 
-}
+        body, html {
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            background-color: var(--deep);
+        }
 
-* { box-sizing: border-box; }
+        /* --- THE GRAIN (Visible Texture) --- */
+        .noise {
+            position: fixed; inset: 0;
+            z-index: 10;
+            opacity: 0.25; /* Higher opacity = more visible grain */
+            pointer-events: none;
+            /* High contrast filter makes the noise pixels "crisp" */
+            filter: contrast(170%) brightness(1000%);
+        }
 
-body {
-    margin: 0;
-    background-color: var(--bg-color);
-    font-family: var(--font-main);
-    color: #333;
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-    line-height: 1.6;
-}
+        /* --- GRADIENT EXAMPLES --- */
 
-.container {
-    display: flex;
-    flex-direction: column;
-    width: var(--box-width);
-    max-width: 100%;
-    background: var(--card-bg);
-    padding: 0px 50px 40px 50px;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    container-type: inline-size;
-}
+        /* OPTION A: "The Clearing" - Light source top left, deep shadows bottom right */
+        .background.option-a {
+            background: 
+                radial-gradient(circle at 0% 0%, var(--sunlight) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, #000 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, var(--moss) 0%, var(--deep) 100%);
+        }
 
-.header-wrapper {
-    position: sticky;
-    top: 0;
-    background-color: var(--card-bg);
-    z-index: 100;
-    padding: 20px 0;
-    border-bottom: 3px solid var(--brand-color);
-    margin-bottom: var(--section-gap);
-    width: 100%;
-}
+        /* OPTION B: "Ethereal Mesh" - Natural, non-linear spots like your image */
+        .background.option-b {
+            background: 
+                radial-gradient(at 80% 10%, var(--mint) 0px, transparent 50%),
+                radial-gradient(at 20% 30%, var(--glow) 0px, transparent 45%),
+                radial-gradient(at 90% 90%, var(--deep) 0px, transparent 40%),
+                radial-gradient(at 10% 85%, var(--moss) 0px, transparent 50%),
+                var(--moss);
+        }
 
-h1.full-width {
-    margin: 0;
-    color: #1a1a1a;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    text-align: center;
-    white-space: nowrap;
-    /* Responsive font size based on container width */
-    font-size: 8.4cqw; 
-    display: block;
-    width: 100%;
-}
+        /* OPTION C: "Morning Mist" - Soft, high-key green glow */
+        .background.option-c {
+            background: 
+                radial-gradient(at 50% -20%, var(--sunlight) 0px, transparent 70%),
+                radial-gradient(at 100% 50%, var(--mint) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, var(--glow) 0px, transparent 50%),
+                var(--moss);
+        }
 
-.slogan-section {
-    text-align: center;
-    margin-top: 20px; 
-    margin-bottom: var(--section-gap);
-    padding: 40px;
-    border: 3px solid var(--brand-light); 
-    border-radius: var(--tile-radius);
-    background-color: rgba(125, 163, 146, 0.08);
-}
+        .background { position: fixed; inset: 0; z-index: 1; }
 
-.slogan-text {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--brand-color);
-    margin: 0;
-}
+        .content {
+            position: relative; z-index: 20;
+            height: 100%; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+        }
 
-.slogan-name {
-    font-size: 1.2rem;
-    color: #333;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-h2 {
-    color: var(--brand-color);
-    margin: 40px 0 30px 0;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.tile-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.tile {
-    aspect-ratio: 1 / 1;
-    border-radius: var(--tile-radius);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    text-align: center;
-}
-
-.tile-image {
-    background-size: cover;
-    background-position: center;
-}
-
-.tile-text {
-    background: var(--bg-color);
-    color: #333;
-    font-size: 1.05rem;
-    flex-direction: column;
-}
-
-.tile-text h3 {
-    margin: 0 0 10px 0;
-    color: var(--brand-mid);
-}
-
-.section-divider {
-    border-top: 2px solid #e2e2e2;
-    margin-top: 60px;
-    padding-top: 10px; 
-}
-
-.intro-section {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-    padding-top: 0px; 
-    margin-bottom: 80px; 
-}
-
-.portrait-square {
-    width: 300px;
-    height: 400px;
-    flex-shrink: 0;
-    background: url('files/Jonas Hunziker Portrait_3.jpg') no-repeat center center;
-    background-size: cover;
-    border-radius: 8px;
-    box-shadow: 10px 10px 0px var(--brand-light);
-}
-
-.description {
-    font-size: 1.1rem;
-    text-align: justify;
-}
-
-.contact-info {
-    font-size: 1.1rem;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    gap: 20px;
-    padding-top: 40px;
-    border-top: 2px solid #e2e2e2;
-}
-
-.contact-info a { 
-    color: #333; 
-    text-decoration: none; 
-    transition: color 0.2s ease-in-out;
-}
-
-.contact-info a:hover {
-    color: var(--brand-light);
-}
-
-@media (max-width: 768px) { /* Anpassungen für mobile (Handy) Ansicht */
-    .container { padding: 0px 20px 30px 20px; } /* top wenig damit Titel nicht zu tief*/
-    .tile-grid { grid-template-columns: 1fr; }
-    .tile { aspect-ratio: auto; min-height: 250px; }
-    .mobile-order-text { order: 2; }
-    .mobile-order-img { order: 1; }
-    .intro-section { flex-direction: column; text-align: center; }
-    /* h1.full-width { font-size: 8.7cqw } */
-    h1.full-width {
-        padding-top: 10px;   /* 10 Verschiebt den Titel 10px nach unten */
-        font-size: 7.7vw; 
-        white-space: nowrap;
-        display: block;
-        width: 100%;
-        letter-spacing: -0.05em; /* Leichtes Zusammenrücken für mehr Platz */
-    }
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    .slogan-text {font-size: 1.5rem; }
-    .portrait-square { 
-        width: calc(100% - 10px); 
-        aspect-ratio: 3 / 4;      /* Erzwingt das Quadrat (= Quadrat) */
-        height: auto;             /* Überschreibt feste Pixelwerte vom Desktop */
-        max-width: 500px;         /* Optional: Verhindert, dass es auf Tablets riesig wird */
-        margin-right: 10px;       
-    }
-}
-</style>
+        h1 { font-size: 5rem; margin: 0; letter-spacing: -2px; }
+        p { font-size: 1.5rem; font-weight: 300; opacity: 0.8; }
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header-wrapper">
-        <h1 class="full-width">HUNZIKER BAUMPFLEGE</h1>
+    <svg style="display:none">
+        <filter id="film-grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+        </filter>
+    </svg>
+
+    <div class="noise" style="filter: url(#film-grain);"></div>
+    
+    <div class="background option-c"></div>
+
+    <div class="content">
+        <h1>HUNZIKER BAUMPFLEGE</h1>
+        <p>„Entschieden, gute Arbeit zu leisten.“</p>
     </div>
 
-    <div class="slogan-section">
-        <p class="slogan-text">„Entschieden, gute Arbeit zu leisten.“</p>
-        <p class="slogan-name">Jonas Hunziker</p>
-    </div>
-
-    <section>
-        <h2>Angebot</h2>
-        
-        <div class="tile-grid">
-            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Pflanzen2.jpg');"></div>
-            <div class="tile tile-text mobile-order-text">
-                <h3>Pflanzen</h3>
-                <p>Bäume sind ein Generationenprojekt. Was wir heute pflanzen, bringt noch der nächsten Generation Freude, Schatten und auch Frucht. Gerne berate ich Sie bei der Pflanzenwahl und führe die Pflanzarbeit am richtigen Standort aus.</p>
-            </div>
-        </div>
-
-        <div class="tile-grid">
-            <div class="tile tile-text mobile-order-text">
-                <h3>Pflegen</h3>
-                <p>Im frühen Baumalter einen stabilen Kronenaufbau gewährleisten, Abstand zu Gebäuden schaffen, Obstbäume schneiden oder Totholz entfernen. Alles ist machbar.</p>
-            </div>
-            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Faellen2.jpg');"></div>
-        </div>
-
-        <div class="tile-grid">
-            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Beurteilen.jpg');"></div>
-            <div class="tile tile-text mobile-order-text">
-                <h3>Beurteilen</h3>
-                <p>Gerne verschaffen ich Klarheit über die Gesundheit Ihres Baumes und definiere entsprechende Massnahmen.</p>
-            </div>
-        </div>
-
-        <div class="tile-grid">
-            <div class="tile tile-text mobile-order-text">
-                <h3>Fällen</h3>
-                <p>Wenn der Baum weg muss, ohne das die Umgebung schaden nehmen darf, sind Sie an der richtigen Adresse. Ich fälle die Bäume fachgemäss von oben nach unten.</p>
-            </div>
-            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Faellen3.jpg');"></div>
-        </div>
-    </section>
-
-
-
-    <section class="section-divider">
-        <h2>Über mich</h2>
-        <div class="intro-section">
-            <div class="portrait-square"></div>
-            <div>
-                <p class="description">
-                    <strong>„Entschieden, gute Arbeit zu leisten.“</strong><br>
-                    Das ist mein täglicher Antrieb. Mein Ziel ist es, jederzeit erstklassige Arbeit  zu liefern für die Gesundheit Ihrer Bäume und die Sicherheit auf Ihrem Grundstück. Dabei ist jeder Auftrag für mich auch eine Chance, mich weiterzuentwickeln. Ich strebe danach, mit jeder Herausforderung zu wachsen, neues Fachwissen zu erlernen und meine langjährige Erfahrung in der Seilklettertechnik und Baumpflege stetig zu vertiefen.<br><br>
-
-                    <strong>Jonas Hunziker<br>
-                    Inhaber und Geschäftsführer</strong><br><br>
-                    Baumpflegespezialist FA<br>
-                    Landschaftsgärtner EFZ
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="contact-info">
-        <span>📞 <a href="tel:+41786034397">078 603 43 97</a></span>
-        <span>📌 <a href="https://maps.app.goo.gl/yUAcG2PGMhpQUkfa8" target="_blank">Stolten 102, 5054 Kirchleerau</a></span>
-        <span>✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a></span>
-    </footer>
-</div>
 </body>
 </html>
