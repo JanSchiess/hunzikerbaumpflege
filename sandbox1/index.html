@@ -3,64 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hunziker Baumpflege</title>
+    <title>Warm Atmospheric Mesh Lab</title>
     <link rel="icon" type="image/png" href="/files/favicon_logo_HB_transparent_circle.png">
     <style>
         :root {
-            --deep: #0f1e19;
-            --moss: #243d32;
-            --mint: #7da392;
-            --glow: #a8c3b8;
-            --sunlight: #cbdad3;
+            /* Your Moodboard Palette */
+            --amber-glow: #F0AC32;
+            --burnt-coral: #E46242;
+            --deep-forest: #24694E;
+            --dark-void: #0d2119; /* Deep shadow base */
         }
 
         body, html {
             margin: 0; padding: 0;
             height: 100%; width: 100%;
             overflow: hidden;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: system-ui, -apple-system, sans-serif;
             color: white;
-            background-color: var(--deep);
+            background-color: var(--dark-void);
         }
 
-        /* --- THE GRAIN (Visible Texture) --- */
+        /* --- THE CRISP FILM GRAIN --- */
         .noise {
             position: fixed; inset: 0;
             z-index: 10;
-            opacity: 0.25; /* Higher opacity = more visible grain */
+            opacity: 0.28; /* Higher value = heavier grain */
             pointer-events: none;
-            /* High contrast filter makes the noise pixels "crisp" */
-            filter: contrast(170%) brightness(1000%);
+            filter: contrast(180%) brightness(1000%);
         }
 
-        /* --- GRADIENT EXAMPLES --- */
+        /* --- RADIAL MESH SELECTIONS --- */
 
-        /* OPTION A: "The Clearing" - Light source top left, deep shadows bottom right */
+        /* OPTION A: "Golden Hour Canopy" - Rich amber/coral light cutting into dark green */
         .background.option-a {
             background: 
-                radial-gradient(circle at 0% 0%, var(--sunlight) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, #000 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, var(--moss) 0%, var(--deep) 100%);
+                radial-gradient(at 15% 15%, var(--amber-glow) 0px, transparent 55%),
+                radial-gradient(at 85% 30%, var(--burnt-coral) 0px, transparent 50%),
+                radial-gradient(at 50% 85%, var(--deep-forest) 0px, transparent 60%),
+                var(--dark-void);
         }
 
-        /* OPTION B: "Ethereal Mesh" - Natural, non-linear spots like your image */
+        /* OPTION B: "Ember Eclipse" - Centered warm burn fading into deep forest bounds */
+        /*
         .background.option-b {
             background: 
-                radial-gradient(at 80% 10%, var(--mint) 0px, transparent 50%),
-                radial-gradient(at 20% 30%, var(--glow) 0px, transparent 45%),
-                radial-gradient(at 90% 90%, var(--deep) 0px, transparent 40%),
-                radial-gradient(at 10% 85%, var(--moss) 0px, transparent 50%),
-                var(--moss);
+                radial-gradient(circle at 60% 40%, var(--burnt-coral) 0%, transparent 60%),
+                radial-gradient(circle at 35% 65%, var(--amber-glow) 0%, transparent 50%),
+                radial-gradient(circle at center, var(--deep-forest) 0%, var(--dark-void) 100%);
         }
-
-        /* OPTION C: "Morning Mist" - Soft, high-key green glow */
-        .background.option-c {
-            background: 
-                radial-gradient(at 50% -20%, var(--sunlight) 0px, transparent 70%),
-                radial-gradient(at 100% 50%, var(--mint) 0px, transparent 50%),
-                radial-gradient(at 0% 50%, var(--glow) 0px, transparent 50%),
-                var(--moss);
-        }
+        */
 
         .background { position: fixed; inset: 0; z-index: 1; }
 
@@ -71,22 +62,22 @@
             text-align: center;
         }
 
-        h1 { font-size: 5rem; margin: 0; letter-spacing: -2px; }
-        p { font-size: 1.5rem; font-weight: 300; opacity: 0.8; }
+        h1 { font-size: 5rem; margin: 0; letter-spacing: -2px; font-weight: 800; }
+        p { font-size: 1.5rem; font-weight: 300; opacity: 0.85; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <svg style="display:none">
         <filter id="film-grain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
             <feColorMatrix type="saturate" values="0" />
         </filter>
     </svg>
 
     <div class="noise" style="filter: url(#film-grain);"></div>
     
-    <div class="background option-c"></div>
+    <div class="background option-a"></div>
 
     <div class="content">
         <h1>HUNZIKER BAUMPFLEGE</h1>
