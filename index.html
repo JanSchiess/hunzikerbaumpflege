@@ -1,159 +1,296 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hunziker Baumpflege — Kirchleerau (AG) & Umgebung</title>
-  <meta name="description" content="Hunziker Baumpflege in Kirchleerau (AG) & Umgebung. Baumfällung, Baumschnitt, Pflege. Zwischenstand der Website: Am Entstehen." />
-  <style>
-    :root{
-      --bg:#f5f7f6;
-      --panel:#ffffff;
-      --text:#15201a;
-      --muted:#64706a;
-      --accent:#106b2d;   /* Grün anpassbar */
-      --accent-2:#0b4d20;
-      --line:#e6ece9;
-      --max:960px;
-      --r:16px;
-    }
-    *{box-sizing:border-box}
-    html,body{
-      margin:0;padding:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      line-height:1.6;
-    }
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%;height:auto;display:block}
-    .wrap{max-width:var(--max);margin:auto;padding:clamp(16px,3vw,28px)}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hunziker Baumpflege</title>
+<link rel="icon" type="image/png" href="files/favicon_logo_HB_transparent_circle.png">
 
-    /* Gläserner Top-Banner */
-    header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.7);
-      backdrop-filter:saturate(1.2) blur(8px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{font-weight:800;letter-spacing:.2px}
-    .call{
-      display:inline-flex;align-items:center;gap:.6rem;
-      border:1px solid var(--line);background:#fff;border-radius:999px;
-      padding:.55rem .9rem; color:var(--text)
-    }
-    .call strong{white-space:nowrap}
+<style>
+:root {
+    --bg-color: #f4f7f4;
+    --card-bg: #ffffff;
+    --brand-color: #2c4b3e;
+    --brand-light: #7da392;
+    --brand-mid: #547b6a; 
+    --mint-gradient: linear-gradient(135deg, #d4e0d4 0%, #8ca69e 100%);
+    --tile-radius: 12px;
+    --font-main: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --box-width: 1000px;
+    --section-gap: 80px; 
+}
 
-    /* Center-Card */
-    .stage{
-      min-height:70vh;display:grid;place-items:center;
-    }
-    .card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--r);
-      padding:clamp(20px,4vw,36px);
-      box-shadow:0 10px 40px rgba(0,0,0,.06);
-      text-align:center;
-    }
-    h1{font-size:clamp(1.6rem,4.5vw,2.6rem);margin:.2rem 0 .4rem}
-    .eyebrow{
-      color:var(--muted);text-transform:uppercase;letter-spacing:.14rem;
-      font-size:.92rem;
-    }
-    .subtitle{color:#2b3430;margin-top:.4rem}
-    .locale{display:inline-block;margin-top:.9rem;padding:.25rem .6rem;
-      border-radius:999px;border:1px solid var(--line);background:#fff;color:#2b3430;font-size:.95rem}
+* { box-sizing: border-box; }
 
-    /* Rotierende Sprüche */
-    .ticker{
-      margin-top:1rem;margin-bottom:1.0rem;font-size:clamp(1rem,2.8vw,1.25rem);font-weight:600;color:var(--accent);
-      min-height:2.2em;display:grid;place-items:center
-    }
-    .line{
-      will-change:opacity,transform;
-      opacity:0;transform:translateY(8px) scale(.985);
-      transition:opacity .35s ease, transform .35s ease;
-      text-wrap:balance;
-    }
-    .line.show{opacity:1;transform:translateY(0) scale(1)}
-    .hint{color:var(--muted);font-size:.95rem;margin-top:.6rem}
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: var(--font-main);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
 
-    footer{margin-top:24px;padding:24px 0;color:var(--muted);font-size:.95rem;text-align:center}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: var(--box-width);
+    max-width: 100%;
+    background: var(--card-bg);
+    padding: 0px 50px 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    container-type: inline-size;
+}
 
-    @media (prefers-reduced-motion: reduce){
-      .line{transition:none}
+.header-wrapper {
+    position: sticky;
+    top: 0;
+    background-color: var(--card-bg);
+    z-index: 100;
+    padding: 20px 0;
+    border-bottom: 3px solid var(--brand-color);
+    margin-bottom: var(--section-gap);
+    width: 100%;
+}
+
+h1.full-width {
+    margin: 0;
+    color: #1a1a1a;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-align: center;
+    white-space: nowrap;
+    /* Responsive font size based on container width */
+    font-size: 8.4cqw; 
+    display: block;
+    width: 100%;
+}
+
+.slogan-section {
+    text-align: center;
+    margin-top: 20px; 
+    margin-bottom: var(--section-gap);
+    padding: 40px;
+    border: 3px solid var(--brand-light); 
+    border-radius: var(--tile-radius);
+    background-color: rgba(125, 163, 146, 0.08);
+}
+
+.slogan-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    margin: 0;
+}
+
+.slogan-name {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+h2 {
+    color: var(--brand-color);
+    margin: 40px 0 30px 0;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.tile {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--tile-radius);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.tile-image {
+    background-size: cover;
+    background-position: center;
+}
+
+.tile-text {
+    background: var(--bg-color);
+    color: #333;
+    font-size: 1.05rem;
+    flex-direction: column;
+}
+
+.tile-text h3 {
+    margin: 0 0 10px 0;
+    color: var(--brand-mid);
+}
+
+.section-divider {
+    border-top: 2px solid #e2e2e2;
+    margin-top: 60px;
+    padding-top: 10px; 
+}
+
+.intro-section {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    padding-top: 0px; 
+    margin-bottom: 80px; 
+}
+
+.portrait-square {
+    width: 300px;
+    height: 400px;
+    flex-shrink: 0;
+    background: url('files/Jonas Hunziker Portrait_3.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 8px;
+    box-shadow: 10px 10px 0px var(--brand-light);
+}
+
+.description {
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.contact-info {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    gap: 20px;
+    padding-top: 40px;
+    border-top: 2px solid #e2e2e2;
+}
+
+.contact-info a { 
+    color: #333; 
+    text-decoration: none; 
+    transition: color 0.2s ease-in-out;
+}
+
+.contact-info a:hover {
+    color: var(--brand-light);
+}
+
+@media (max-width: 768px) { /* Anpassungen für mobile (Handy) Ansicht */
+    .container { padding: 0px 20px 30px 20px; } /* top wenig damit Titel nicht zu tief*/
+    .tile-grid { grid-template-columns: 1fr; }
+    .tile { aspect-ratio: auto; min-height: 250px; }
+    .mobile-order-text { order: 2; }
+    .mobile-order-img { order: 1; }
+    .intro-section { flex-direction: column; text-align: center; }
+    /* h1.full-width { font-size: 8.7cqw } */
+    h1.full-width {
+        padding-top: 10px;   /* 10 Verschiebt den Titel 10px nach unten */
+        font-size: 7.7vw; 
+        white-space: nowrap;
+        display: block;
+        width: 100%;
+        letter-spacing: -0.05em; /* Leichtes Zusammenrücken für mehr Platz */
     }
-  </style>
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .slogan-text {font-size: 1.5rem; }
+    .portrait-square { 
+        width: calc(100% - 10px); 
+        aspect-ratio: 3 / 4;      /* Erzwingt das Quadrat (= Quadrat) */
+        height: auto;             /* Überschreibt feste Pixelwerte vom Desktop */
+        max-width: 500px;         /* Optional: Verhindert, dass es auf Tablets riesig wird */
+        margin-right: 10px;       
+    }
+}
+</style>
 </head>
 <body>
-  <header aria-label="Top-Bereich">
-    <div class="wrap nav">
-      <div class="brand">Hunziker Baumpflege</div>
-      <a class="call" href="tel:+41786034397" aria-label="Jetzt anrufen, Telefonnummer 078 603 43 97">
-        <span>📞</span><strong>078 603 43 97</strong>
-      </a>
+
+<div class="container">
+    <div class="header-wrapper">
+        <h1 class="full-width">HUNZIKER BAUMPFLEGE</h1>
     </div>
-  </header>
 
-  <main class="wrap">
-    <section class="stage">
-      <div class="card" role="status" aria-live="polite">
-        <!-- <div class="eyebrow">Diese Website ist gerade am Entstehen…</div> -->
-        <h2>Diese Website ist gerade am Entstehen…</h2>
-        <p class="subtitle">Wir bauen hier etwas Schönes für Sie auf:</p>
-        <div class="ticker" aria-label="Statusmeldungen zur Entstehung">
-          <div id="line" class="line">Am Code bewässern…</div>
+    <div class="slogan-section">
+        <p class="slogan-text">„Entschieden, gute Arbeit zu leisten.“</p>
+        <p class="slogan-name">Jonas Hunziker</p>
+    </div>
+
+    <section>
+        <h2>Angebot</h2>
+        
+        <div class="tile-grid">
+            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Pflanzen2.jpg');"></div>
+            <div class="tile tile-text mobile-order-text">
+                <h3>Pflanzen</h3>
+                <p>Bäume sind ein Generationenprojekt. Was wir heute pflanzen, bringt noch der nächsten Generation Freude, Schatten und auch Frucht. Gerne berate ich Sie bei der Pflanzenwahl und führe die Pflanzarbeit am richtigen Standort aus.</p>
+            </div>
         </div>
-        <span class="locale"><strong>🌿 Pflanzungen, Pflege, Baumbeurteilungen, Fällungen</strong></span>
-        <!-- <p class="hint">Kurz gedulden – bald ist alles bereit.</p> -->
-      </div>
+
+        <div class="tile-grid">
+            <div class="tile tile-text mobile-order-text">
+                <h3>Pflegen</h3>
+                <p>Im frühen Baumalter einen stabilen Kronenaufbau gewährleisten, Abstand zu Gebäuden schaffen, Obstbäume schneiden oder Totholz entfernen. Alles ist machbar.</p>
+            </div>
+            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Faellen2.jpg');"></div>
+        </div>
+
+        <div class="tile-grid">
+            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Beurteilen.jpg');"></div>
+            <div class="tile tile-text mobile-order-text">
+                <h3>Beurteilen</h3>
+                <p>Gerne verschaffen ich Klarheit über die Gesundheit Ihres Baumes und definiere entsprechende Massnahmen.</p>
+            </div>
+        </div>
+
+        <div class="tile-grid">
+            <div class="tile tile-text mobile-order-text">
+                <h3>Fällen</h3>
+                <p>Wenn der Baum weg muss, ohne das die Umgebung schaden nehmen darf, sind Sie an der richtigen Adresse. Ich fälle die Bäume fachgemäss von oben nach unten.</p>
+            </div>
+            <div class="tile tile-image mobile-order-img" style="background-image: url('files/Faellen3.jpg');"></div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    © <span id="y"></span> Hunziker Baumpflege • 📌 Jonas Hunziker, <a href="https://maps.app.goo.gl/ELqgapmRRc1KnhFH6" >Stolten 102, 5054 Kirchleerau</a> • 📞 <a href="tel:+41786034397">078 603 43 97</a> • ✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a>
-  </footer>
 
-  <script>
-    // Jahr
-    document.getElementById('y')?.append(new Date().getFullYear());
 
-    // 10 Wortspiele/Wartungszeilen (cringe erlaubt 😅)
-    const lines = [
-      "Am Code bewässern…",
-      "Die Seite treibt erste Knospen…",
-      "Wir sägen noch die letzten Bugs ab…",
-      "Design am Auslichten der Krone…",
-      "Neue Features am Einpflanzen…",
-      "HTML frisch gedüngt – gleich spriesst es!",
-      "Build wächst – bitte nicht gießen, wir übernehmen…",
-      "Baumstruktur sortieren… hier und auch draussen…",
-      "Startseite am Umtopfen…",
-    ];
+    <section class="section-divider">
+        <h2>Über mich</h2>
+        <div class="intro-section">
+            <div class="portrait-square"></div>
+            <div>
+                <p class="description">
+                    <strong>„Entschieden, gute Arbeit zu leisten.“</strong><br>
+                    Das ist mein täglicher Antrieb. Mein Ziel ist es, jederzeit erstklassige Arbeit  zu liefern für die Gesundheit Ihrer Bäume und die Sicherheit auf Ihrem Grundstück. Dabei ist jeder Auftrag für mich auch eine Chance, mich weiterzuentwickeln. Ich strebe danach, mit jeder Herausforderung zu wachsen, neues Fachwissen zu erlernen und meine langjährige Erfahrung in der Seilklettertechnik und Baumpflege stetig zu vertiefen.<br><br>
 
-    const el = document.getElementById('line');
-    let i = 0;
+                    <strong>Jonas Hunziker<br>
+                    Inhaber und Geschäftsführer</strong><br><br>
+                    Baumpflegespezialist FA<br>
+                    Landschaftsgärtner EFZ
+                </p>
+            </div>
+        </div>
+    </section>
 
-    function showNext(){
-      if(!el) return;
-      // ausblenden
-      el.classList.remove('show');
-      setTimeout(()=>{
-        i = (i + 1) % lines.length;
-        el.textContent = lines[i];
-        // einblenden
-        requestAnimationFrame(()=> el.classList.add('show'));
-      }, 220); // kurzer Übergang (ausgeblendet)
-    }
-
-    // Start
-    el?.classList.add('show');
-    // alle 2.8s wechseln
-    const interval = setInterval(showNext, 4000); // Zeitintervall Millisekunden
-
-    // Sauber aufräumen (optional, falls Single Page erweitert wird)
-    window.addEventListener('beforeunload', ()=> clearInterval(interval));
-  </script>
+    <footer class="contact-info">
+        <span>📞 <a href="tel:+41786034397">078 603 43 97</a></span>
+        <span>📌 <a href="https://maps.app.goo.gl/yUAcG2PGMhpQUkfa8" target="_blank">Stolten 102, 5054 Kirchleerau</a></span>
+        <span>✉️ <a href="mailto:info@hunzikerbaumpflege.ch">info@hunzikerbaumpflege.ch</a></span>
+    </footer>
+</div>
 </body>
 </html>
